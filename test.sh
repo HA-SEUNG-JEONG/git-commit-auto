@@ -1,14 +1,18 @@
 #!/bin/sh
 
-# 사용자로부터 커밋 메시지를 입력 받음
-read -p "Enter commit message: " commit_message
 
 # 모든 변경 사항을 스테이징
-git add .
+# git add .
 
 # 특정 파일만 스테이징
-read -p "Enter file to stage: " file_path
-git add "$file_path"
+read -p "Do you want to stage all files? (y/n) " stage_all
+
+if [ "$stage_all" = "y" ]; then
+	git add .
+else
+	read -p "Enter commit message: " commit_message
+	git add $file_path
+fi
 
 # 입력 받은 커밋 메시지로 커밋
 git commit -m "$commit_message"
@@ -18,3 +22,5 @@ current_branch=$(git rev-parse --abbrev-ref HEAD)
 
 # 변경 사항을 원격 저장소로 푸시
 git push origin $current_branch
+
+# 원격 저장소로부터 변경 사항 가져오기
