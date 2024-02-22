@@ -10,6 +10,7 @@ read -p "Do you want to stage all files? (y/n) " stage_all
 
 
 if [ "$stage_all" = "y" ]; then
+	read -p "Enter commit message: " commit_message
 	git add .
 else
 	read -p "Enter commit message: " commit_message
