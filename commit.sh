@@ -5,13 +5,14 @@
 # git add .
 
 # 특정 파일만 스테이징
-read -p "Enter commit message: " commit_message
+
 read -p "Do you want to stage all files? (y/n) " stage_all
 
 
 if [ "$stage_all" = "y" ]; then
 	git add .
 else
+	read -p "Enter commit message: " commit_message
 	read -p "Enter File: " file_path
 	git add "$file_path"
 fi
