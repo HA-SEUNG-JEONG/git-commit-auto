@@ -5,9 +5,9 @@
 # git add .
 
 # 특정 파일만 스테이징
-read -p "Enter commit message: " commit_message
-read -p "Do you want to stage all files? (y/n) " stage_all
 
+read -p "Do you want to stage all files? (y/n) " stage_all
+read -p "Enter commit message: " commit_message
 
 if [ "$stage_all" = "y" ]; then
 	git add .
@@ -16,7 +16,6 @@ else
 	git add "$file_path"
 fi
 
-# 입력 받은 커밋 메시지로 커밋
 git commit -m "$commit_message"
 
 # 현재 브랜치 이름을 가져옴
